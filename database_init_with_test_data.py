@@ -88,8 +88,8 @@ def add_test_data(session):
     add_item(session,
              name="Puddle of Mudd",
              date=datetime.datetime.now(),
-             desc="Puddle of Mudd - Come Clean",
-             url="https://tinyurl.com/ycadkqe8c",
+             desc="Puddle of Mudd - Famous",
+             url="https://tinyurl.com/yarbkogr",
              cid=2,
              uid=1)
 
@@ -129,7 +129,7 @@ def add_test_data(session):
              name="Nikki Sixx",
              date=datetime.datetime.now(),
              desc="Nikki Sixx - Heroin Diaries",
-             url="https://tinyurl.com/y7quxplq",
+             url="https://tinyurl.com/y99ryncm",
              cid=4,
              uid=1)
 
