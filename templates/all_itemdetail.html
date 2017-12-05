@@ -1,0 +1,36 @@
+
+<!-- Import the base template -->
+{% extends "base.html" %}
+
+{% block title %}{{ item.name }}{% endblock title %}
+{% block content %}
+
+<!-- bring in the nav template -->
+{% include "nav.html" %}
+
+<!-- bring in the flash message  template -->
+{% include "flash.html" %}
+
+<section id="item_detail" class="section">
+    <div class="container">
+        <div class="row">
+            <!-- display the categories -->
+            {% include "categories.html" %}
+
+            <div class="col-md-9 padding-top-49">
+                <div class="thumbnail">
+                    <img class="img-responsive"
+                         src="{{ item.picture }}"
+                         alt="{{ item.name }}">
+
+                    <div class="caption-full">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

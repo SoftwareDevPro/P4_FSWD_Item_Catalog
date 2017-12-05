@@ -1,0 +1,68 @@
+
+<!-- Import the base template -->
+{% extends "base.html" %}
+
+<!-- Import the nav bar -->
+{% include "nav.html" %}
+
+{% block content %}
+
+<!-- Displays the add new item form for the logged in user. -->
+
+<section id="add_item" class="section">
+    <div class="section-content container padding-1-5">
+
+        <h4>Add New Item</h4>
+
+        <form action="{{url_for('add_item')}}"
+              method="post"
+              class="padding-top-9">
+
+            <div class="form-group">
+
+                <label for="name">Name:</label>
+                <input type ="text"
+                       class="form-control"
+                       id="name"
+                       maxlength="500"
+                       name="name"></div>
+
+                <label for="description">Description:</label>
+                <textarea name="description"
+                          id="description"
+                          class="form-control"
+                          maxlength="250"
+                          cols="30"
+                          rows="3"></textarea>
+
+                <label for="picture">URL:</label>
+                <input type ="url"
+                       class="form-control"
+                       id="picture"
+                       maxlength="500"
+                       name="picture"
+                       placeholder="http://www.pictureurl.com">
+
+                <label for="picture">Category:</label>
+                <select name="category">
+                  <!-- Loop through each of the categories so one can
+                       be selected. -->
+                {% for c in categories %}
+                    <option value="{{c.name}}">{{c.name}}</option>
+                {% endfor %}
+                </select>
+
+                <button type="submit"
+                        id="submit"
+                        class="btn btn-primary">
+                        Save
+                </button>
+                <a href="{{url_for('show_catalog')}}">
+                    <button type="button" class="btn btn-danger">Cancel</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
