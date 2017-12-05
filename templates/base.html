@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- Serves as a base template for the other templates -->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Pull in bootstrap CSS, our CSS, jquery, and Google platform.js -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=start"> </script>
+
+  {% block head %}{% endblock head %}
+</head>
+<body>
+    <!-- Display a nice border around the content -->
+    <div class="border-site bs-top"></div>
+    <div class="border-site bs-right"></div>
+    <div class="border-site bs-left"></div>
+    <div class="border-site bs-bottom"></div>
+
+    <!-- display the content -->
+    {% block content %}
+    {% endblock content %}
+
+    <!-- pull in bootstrap.js -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <script>
+    function signInCallback(authResult) {
+      if (authResult['code']) {
+        // Remove the sign-in button once the user is authorized
+        $('#login').attr('style','display:none');
+
+        // Send a one time use code to the server, and if successful,
+        // write a message to the web page and redirect back to the main page
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state={{STATE}}',
+          processData: false,
+          data: authResult['code'],
+          contentType: 'application/octet-stream; charset=utf-8',
+          success: function(result) {
+            if (result) {
+              $('#result').html('Login Was Successful!<br/>'+ result + '<br/>Redirecting...');
+              setTimeout(function() {
+                // Redirect to the main catalog page. Timeout after 5 seconds.
+                window.location.href = "/catalog";
+              }, 5000);
+            } else if (authResult['error']) {
+              // Authentication error
+              console.log('There was an issue: ' + authResult['error']);
+            } else {
+              // Some other error, display a basic message.
+              str_error = 'Failed to make a server-side call.' +
+                          ' Check your configuration and console.';
+              $('#result').html(str_error);
+            }
+          },
+          error: function(result) {
+            // on error, log it to the console.
+            console.log(result);
+          }
+      }); } }
+    </script>
+</body>
+</html>

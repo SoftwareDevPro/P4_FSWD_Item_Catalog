@@ -1,0 +1,45 @@
+
+<!-- Import the base template -->
+{% extends "base.html" %}
+
+{% block title %}Catalog{% endblock title %}
+
+<!-- Start of content -->
+{% block content %}
+
+<!-- Import the nav bar -->
+{% include "nav.html" %}
+<!-- Import the flash message template -->
+{% include "flash.html" %}
+
+<!-- Page Content -->
+<section id="catalog" class="section">
+    <div class="container">
+        <div class="row">
+
+            <!-- Pull in the categories template -->
+            {% include "categories.html" %}
+
+            <div class="col-md-9">
+                <h4 class="padding-bottom-19">Latest Items</h4>
+                {% for i in items %}
+                <div class="thumbnail">
+                    <div class="caption-full">
+                        <img class="img-responsive img-center"
+                             src="{{ i.picture }}"
+                             alt="{{ i.name }}">
+                    </div>
+                    <a href="{{url_for('show_item', category_name=i.category.name, item_name=i.name)}}">
+                        <h3>{{ i.name }}</h3>
+                        <h5 class="pull-right">Last update: {{ i.date.strftime("%-d-%b-%Y at %I:%M %p") }}</h5>
+                        <h6>({{ i.category.name }})</h6>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End of content -->
+{% endblock %}

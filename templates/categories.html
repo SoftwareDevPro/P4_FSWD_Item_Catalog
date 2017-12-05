@@ -1,0 +1,15 @@
+
+<!-- Displays the categories -->
+
+<section id="show_categories">
+    <div class="col-md-2">
+        <h5 class="lead">Categories</h5>
+        <div class="list-group">
+            <!-- Loop through all the categories, and display them -->
+            {% for c in categories %}
+            <a href="{{url_for('show_category', category_name=c.name,)}}"
+               class="list-group-item">{{ c.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
