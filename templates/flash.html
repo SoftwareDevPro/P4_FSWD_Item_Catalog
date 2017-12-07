@@ -1,0 +1,17 @@
+
+<!-- Retrieve all the flashed messages -->
+{% with messages = get_flashed_messages() %}
+    <!-- and if any messages exist ... -->
+    {% if messages %}
+        <div class="alert alert-info alert-dismissable animated fadeIn">
+            <!-- Loop through the messages, and display the message -->
+            {% for message in messages %}
+            <a href="#"
+               class="close"
+               data-dismiss="alert"
+               aria-label="close">×</a>
+            <strong>{{ message }}</strong>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
