@@ -1,0 +1,42 @@
+
+<!-- Import the base template -->
+{% extends "base.html" %}
+
+<!-- Start of content -->
+{% block content %}
+
+<!-- Import the nav bar -->
+{% include "nav.html" %}
+<!-- Import the flash message template -->
+{% include "flash.html" %}
+
+<section id="show_item" class="section">
+    <div class="container">
+        <div class="row">
+
+            <!-- Display the categories -->
+            {% include "categories.html" %}
+
+            <div class="col-md-9">
+                <h6 class="padding-bottom-26">Items (<strong>{{count}}</strong>)</h6>
+                <!-- for each item ... -->
+                {% for i in items %}
+                <div class="thumbnail text-center">
+                    <!-- Display the item picture, and the item name. -->
+                    <div class="caption-full">
+                        <img class="img-responsive img-center"
+                             src="{{ i.picture }}"
+                             alt="{{ i.name }}">
+                    </div>
+                    <a href = "{{url_for('show_item', category_name=i.category.name, item_name=i.name)}}">
+                        <h4>{{ i.name }}</h4>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End of Content -->
+{% endblock %}
