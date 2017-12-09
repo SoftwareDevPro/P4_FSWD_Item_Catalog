@@ -157,6 +157,6 @@ if __name__ == '__main__':
     # Add the test data
     add_test_data(session)
 
-    print "Finished... the database has been populated with test data."
+    print("Finished... the database has been populated with test data.")
 
 #
