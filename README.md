@@ -14,7 +14,7 @@ Project 4 for the Udacity Full Stack Web Developer Program.  The REST (Represent
 
 4. SASS (optional) - SASS is short for Syntactically Awesome Stylesheets.  The static/css/styles.sass is the file to run the sass program on.  The styles stylesheet (static/css/styles.css) was generated from the sass file.  It can be installed via the instructions [here](http://sass-lang.com/install).
 
-## How to install
+## How to install and start
 
 1. Clone the Project Repository:<br /><br />```https://github.com/SoftwareDevPro/P4_FSWD_Item_Catalog```
 
