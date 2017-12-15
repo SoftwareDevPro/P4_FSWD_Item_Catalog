@@ -15,12 +15,14 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+
 def empty_database(session):
     """ Empties out each of the tables in the database. """
-    print ("Emptying out database...")
+    print("Emptying out database...")
     # Delete all the categories, items, users (if any exist).
-    for table in [ Category, Item, User ]:
+    for table in [Category, Item, User]:
         session.query(table).delete()
+
 
 def add_user(session, **kwargs):
     """ Adds the specified user to the database. """
@@ -30,6 +32,7 @@ def add_user(session, **kwargs):
     session.add(user)
     session.commit()
 
+
 def add_category(session, **kwargs):
     """ Adds the specified category to the database. """
     category, user_id = kwargs['name'], kwargs['user_id']
@@ -37,6 +40,7 @@ def add_category(session, **kwargs):
     category = Category(name=category, user_id=user_id)
     session.add(category)
     session.commit()
+
 
 def add_item(session, **kwargs):
     """ Adds the specified item to the database. """
@@ -55,6 +59,7 @@ def add_item(session, **kwargs):
                 user_id=user_id)
     session.add(item)
     session.commit()
+
 
 def add_test_data(session):
 
@@ -148,6 +153,7 @@ def add_test_data(session):
              url="https://tinyurl.com/yb25ex43",
              cid=5,
              uid=1)
+
 
 if __name__ == '__main__':
 

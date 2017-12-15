@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 # Construct the base class for class definitions.
 Base = declarative_base()
 
+
 # CREATE TABLE user (
 #   id INTEGER NOT NULL,
 #   name VARCHAR(250) NOT NULL,
@@ -16,9 +17,10 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = 'user'
 
-    id = Column(Integer, primary_key = True)
-    name = Column(String(250), nullable = False)
-    email = Column(String(250), nullable = False)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
+    email = Column(String(250), nullable=False)
+
 
 # CREATE TABLE category (
 #   id INTEGER NOT NULL,
@@ -28,15 +30,16 @@ class User(Base):
 class Category(Base):
     __tablename__ = 'category'
 
-    id = Column(Integer, primary_key = True)
-    name = Column(String(255), nullable = False)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User, backref="category")
 
     @property
     def serialize(self):
-        """Return object data in easily serializeable format"""
-        return { 'name' : self.name, 'id': self.id }
+        """ Return object data in easily serializeable format """
+        return {'name': self.name, 'id': self.id}
+
 
 # CREATE TABLE item (
 #   id INTEGER NOT NULL,
@@ -58,7 +61,8 @@ class Item(Base):
     description = Column(String(250))
     picture = Column(String(250))
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category, backref=backref('item', cascade='all, delete'))
+    category = relationship(Category,
+                            backref=backref('item', cascade='all, delete'))
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User, backref="items")
 
@@ -66,12 +70,13 @@ class Item(Base):
     def serialize(self):
         """Return the object data in a serializeable format."""
         return {
-            'name'          : self.name,
-            'id'            : self.id,
-            'description'   : self.description,
-            'picture'       : self.picture,
-            'category'      : self.category.name
+            'name': self.name,
+            'id': self.id,
+            'description': self.description,
+            'picture': self.picture,
+            'category': self.category.name
         }
+
 
 # Create the database engine
 engine = create_engine('sqlite:///catalog.db')
