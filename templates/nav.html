@@ -1,51 +1,42 @@
 
-<!-- the template for the navigation bar. -->
+<!-- nav template -->
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button"
-              class="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#navbar-collapse-1"
-              aria-expanded="false">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
 
-        <span class="sr-only">Toggle navigation</span>
-      </button>
+    <a class="navbar-brand"
+       href="{{url_for('show_catalog')}}">
 
-      <a class="navbar-brand"
-         href="{{url_for('show_catalog')}}">
+      <img class="brand-img"
+           src="{{ url_for('static', filename='img/logo.png') }}"
+           alt="Item Catalog Logo">
+    </a>
 
-        <img class="brand-img"
-             src="{{ url_for('static', filename='img/logo.png') }}"
-             alt="Item Catalog Logo">
-      </a>
-      {% if 'username' not in session %}
-      <a href="{{url_for('show_login')}}" class="navbar-text navbar-margin-btn">
-        <button type="button" class="btn btn-default navbar-btn">
-        Log In
-        </button>
-      </a>
-      {% else %}
-      <a href="{{url_for('gdisconnect')}}" class="navbar-text navbar-margin-btn">
-        <button type="button"
-                class="btn btn-default navbar-btn">
-        Logout
-        </button>
-      </a>
-      {% endif %}
-    </div>
+    <div class="navbar-brand" href="#">Item Catalog</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          {% if 'username' not in session %}
+          <a href="{{url_for('show_login')}}" class="navbar-text navbar-margin-btn">
+            <button type="button" class="btn btn-default navbar-btn">
+            Log In
+            </button>
+          </a>
+          {% else %}
+          <a href="{{url_for('gdisconnect')}}" class="navbar-text navbar-margin-btn">
+            <button type="button"
+                    class="btn btn-default navbar-btn">
+            Logout
+            </button>
+          </a>
+          {% endif %}
 
-      {% if 'username' not in session %}
-        <!-- if the user isn't logged in, don't display the add new item option -->
-      {% else %}
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{url_for('add_item')}}">Add New Item</a></li>
+        </li>
       </ul>
-      {% endif %}
     </div>
   </div>
 </nav>

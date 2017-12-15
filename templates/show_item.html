@@ -1,4 +1,6 @@
 
+<!-- show_item template -->
+
 <!-- Import the base template -->
 {% extends "base.html" %}
 
@@ -10,25 +12,24 @@
 <!-- Import the flash message template -->
 {% include "flash.html" %}
 
-<section id="show_item" class="section">
+<section id="show_item" class="section my-4">
     <div class="container">
         <div class="row">
 
             <!-- Display the categories -->
             {% include "categories.html" %}
 
-            <div class="col-md-9">
+            <div class="card col-md-4">
                 <h6 class="padding-bottom-26">Items (<strong>{{count}}</strong>)</h6>
                 <!-- for each item ... -->
                 {% for i in items %}
                 <div class="thumbnail text-center">
-                  
+
                     <!-- Display the item picture, and the item name. -->
-                    <div class="caption-full">
-                        <img class="img-responsive img-center"
-                             src="{{ i.picture }}"
-                             alt="{{ i.name }}">
-                    </div>
+                    <img class="card-img-top img-fluid"
+                         src="{{ i.picture }}"
+                         alt="{{ i.name }}">
+
                     <a href = "{{url_for('show_item', category_name=i.category.name, item_name=i.name)}}">
                         <h4>{{ i.name }}</h4>
                     </a>

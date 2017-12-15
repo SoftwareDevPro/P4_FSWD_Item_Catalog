@@ -1,4 +1,6 @@
 
+<!-- login template -->
+
 <!-- Import the base template -->
 {% extends "base.html" %}
 
@@ -12,7 +14,7 @@
 
 <!-- If the user isn't logged in then display the login button -->
 {% if 'username' not in session %}
-<section id="login" class="section">
+<section id="login" class="my-4 section">
     <div class="container">
         <div class="row">
           <div class="col-sm-2">
@@ -36,10 +38,10 @@
         </div>
     </div>
 </section>
-<section id="login-success" class="section">
+<section id="login-success" class="my-4 section">
     <div class="container">
         <div class="row">
-            <div class="text-center">
+            <div class="mx-auto">
               <div id="result"></div>
             </div>
         </div>

@@ -3,12 +3,17 @@
 <!-- Serves as a base template for the other templates -->
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Item Catalog">
+  <meta name="author" content="Chris Adamson">
 
   <!-- Pull in bootstrap CSS, our CSS, jquery, and Google platform.js -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/shop-item.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://apis.google.com/js/platform.js?onload=start"> </script>
+  <script src="https://apis.google.com/js/platform.js?onload=start"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 
   {% block head %}{% endblock head %}
 </head>
@@ -24,9 +29,13 @@
     {% endblock content %}
 
     <!-- pull in bootstrap.js -->
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
     <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+
     function signInCallback(authResult) {
       if (authResult['code']) {
         // Remove the sign-in button once the user is authorized

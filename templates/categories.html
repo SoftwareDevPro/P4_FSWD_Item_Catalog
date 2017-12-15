@@ -1,14 +1,32 @@
+
+<!-- categories template -->
+
 <!-- Displays the categories -->
 
-<section id="show_categories">
-    <div class="col-md-2">
-        <h5 class="lead">Categories</h5>
-        <div class="list-group">
-            <!-- Loop through all the categories, and display them -->
-            {% for c in categories %}
-            <a href="{{url_for('show_category', category_name=c.name,)}}"
-               class="list-group-item">{{ c.name }}</a>
-            {% endfor %}
-        </div>
-    </div>
-</section>
+<div class="col-lg-3">
+  <h1 class="my-4">Categories</h1>
+  <div class="list-group">
+    <!-- Loop through all the categories, and display them -->
+    {% for c in categories %}
+    <a href="{{url_for('show_category', category_name=c.name,)}}"
+       class="list-group-item">{{ c.name }}</a>
+    {% endfor %}
+
+    {% if 'username' not in session %}
+    <a class="list-group-item">
+      <strong data-toggle="tooltip"
+              data-placement="top"
+              title="Please Login To Add New Item">
+        <div class="btn btn-primary disabled">Add New Item</div>
+      </strong>
+    </a>
+    {% else %}
+    <a class="list-group-item"
+       href="{{url_for('add_item')}}">
+       <strong>
+         <div class="btn btn-primary">Add New Item</div>
+       </strong>
+    </a>
+    {% endif %}
+  </div>
+</div>

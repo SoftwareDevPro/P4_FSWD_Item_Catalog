@@ -1,4 +1,6 @@
 
+<!-- catalog template -->
+
 <!-- Import the base template -->
 {% extends "base.html" %}
 
@@ -20,12 +22,12 @@
             <!-- Pull in the categories template -->
             {% include "categories.html" %}
 
-            <div class="col-md-9">
-                <h4 class="padding-bottom-19">Latest Items</h4>
+            <div class="card col-md-9">
+                <h4 class="my-4">Latest Items</h4>
                 {% for i in items %}
-                <div class="thumbnail">
+                <div class="my-4">
                     <div class="caption-full">
-                        <img class="img-responsive img-center"
+                        <img class="card-img-top img-fluid"
                              src="{{ i.picture }}"
                              alt="{{ i.name }}">
                     </div>
