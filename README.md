@@ -25,3 +25,9 @@ Project 4 for the Udacity Full Stack Web Developer Program.  The REST (Represent
 4. Execute the database initialization script (optional if you want some test data):<br /><br />```python database_init_with_test_data.py```
 
 5. Start the web application:<br /><br />```python application.py```
+
+## Changes made
+
+1. The CSS was updated to bootstrap from CDN rather then use local copies (CSS/JS) of the bootstrap library (https://www.bootstrapcdn.com/).
+
+2.  A Bootstrap theme/template was used in updating the templates (https://github.com/BlackrockDigital/startbootstrap-shop-item).
